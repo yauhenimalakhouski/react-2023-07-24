@@ -1,10 +1,10 @@
 import {Review} from "../Review/component";
 
-export const Reviews = ({children}) => {
+export const Reviews = ({reviews}) => {
     return (
     <div>
         <h2>Reviews</h2>
-        <div>{children.map(review => <Review key={review.id}>{review}</Review>)}</div>
+        <div>{reviews.map(review => <Review key={review.id} review={review}></Review>)}</div>
     </div>
     );
 };

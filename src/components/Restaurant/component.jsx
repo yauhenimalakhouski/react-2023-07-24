@@ -1,12 +1,12 @@
 import { Menu } from "../Menu/component";
 import { Reviews } from "../Reviews/component";
 
-export const Restaurant = ({children}) => {
+export const Restaurant = ({restaurant}) => {
     return (
         <div>
-            <h1>{children.name}</h1>
-            <Menu>{children.menu}</Menu>
-            <Reviews>{children.reviews}</Reviews>
+            <h1>{restaurant.name}</h1>
+            <Menu menu={restaurant.menu}></Menu>
+            <Reviews reviews={restaurant.reviews}></Reviews>
         </div>
     );
 };
