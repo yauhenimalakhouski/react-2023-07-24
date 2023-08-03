@@ -9,8 +9,8 @@ export const MainPage = () => {
   
   return (
     <Layout>
-      <Tabs onTabSelect={setActiveRestaurantIndex} restaurants={restaurants}></Tabs>
-      <Restaurant restaurant={restaurants[activeRestaurantIndex]}></Restaurant>
+      <Tabs onTabSelect={setActiveRestaurantIndex} restaurants={restaurants} />
+      <Restaurant restaurant={restaurants[activeRestaurantIndex]} />
     </Layout>
   );
 };
