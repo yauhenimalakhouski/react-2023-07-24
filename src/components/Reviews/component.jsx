@@ -1,3 +1,4 @@
+import { NewReviewForm } from "../NewReviewForm/component";
 import { Review } from "../Review/component";
 
 export const Reviews = ({ reviews }) => {
@@ -5,10 +6,10 @@ export const Reviews = ({ reviews }) => {
     <div>
       <h3>Reviews</h3>
       <div>
-        {reviews.map((review) => (
-          <Review key={review.id} review={review} />
-        ))}
+        {!!reviews.length &&
+          reviews.map((review) => <Review key={review.id} review={review} />)}
       </div>
+      <NewReviewForm />
     </div>
   );
 };
