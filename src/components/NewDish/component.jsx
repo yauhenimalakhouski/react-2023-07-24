@@ -42,6 +42,7 @@ export const NewDish = (activeRestaurantIndex) => {
                 <div>
                     <label>Name: </label>
                     <input 
+                        name = "dishName"
                         value={form.dishName} 
                         onChange={event => dispatch({type: typeName, payload: event.target.value})} 
                     />
@@ -49,13 +50,15 @@ export const NewDish = (activeRestaurantIndex) => {
                 <div>
                     <label>Price: </label>
                     <input 
+                        name = "dishPrice"
                         value={form.dishPrice} 
                         onChange={event => dispatch({type: typePrice, payload: +event.target.value})} 
                     />
                 </div>
                 <div>
                     <label>Ingridients: </label>
-                    <input 
+                    <input
+                        name = "dishIngridients" 
                         value={form.dishIngridients} 
                         onChange={event => {dispatch({type: typeIngridients, payload: event.target.value.split(',')})}} 
                     />
