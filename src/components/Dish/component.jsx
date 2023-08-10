@@ -1,44 +1,22 @@
 import { useState } from "react";
-import { Button } from "../Button/component.jsx";
-
-const Counter = ({ defaultCount, onCountChange, min, max }) => {
-  const [count, setCount] = useState(defaultCount);
-
-  const decrement = () => {
-    const newValue = count - 1;
-    onCountChange(newValue);
-    setCount(newValue);
-  };
-
-  const increment = () => {
-    const newValue = count + 1;
-    onCountChange(newValue);
-    setCount(newValue);
-  };
-
-  return (
-    <div>
-      <Button disabled={count === min} onClick={decrement}>
-        -
-      </Button>
-      <span> {count} </span>
-      <Button disabled={count === max} onClick={increment}>
-        +
-      </Button>
-    </div>
-  );
-};
+import { Counter } from "../Counter/component";
+import { useCallback } from "react";
 
 const DEFAULT_DISH_AMOUNT = 0;
 
 export const Dish = ({ dish }) => {
   const [price, setPrice] = useState(0);
 
-  const updateAmount = (amount) => setPrice(amount * dish.price);
+  const { price: dishPrice, name } = dish || {};
+
+  const updateAmount = useCallback(
+    (amount) => setPrice(amount * dishPrice),
+    [dishPrice]
+  );
 
   return (
     <div>
-      <div>{dish.name}</div>
+      <div>{name}</div>
       <Counter
         defaultCount={DEFAULT_DISH_AMOUNT}
         min={0}
