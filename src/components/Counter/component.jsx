@@ -11,7 +11,6 @@ export const Counter = ({ defaultCount, onCountChange, min, max }) => {
   });
 
   useEffect(() => {
-    console.log("effect");
     increment();
   }, [increment]);
 

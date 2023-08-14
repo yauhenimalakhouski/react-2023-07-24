@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useContext } from "react";
 import { useRef } from "react";
+import { ThemeContext } from "../../pages/Main/component";
 
 export const Button = ({ children, onClick, disabled }) => {
   const ref = useRef(1); // {current: 1}
+  const theme = useContext(ThemeContext);
 
-  useEffect(() => {
-    ref.current = setInterval(() => console.log("Hello"), 1000);
-  }, []);
+  console.log("theme: ", theme);
 
   return (
     <button
