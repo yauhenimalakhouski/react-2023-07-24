@@ -1,4 +1,4 @@
-import { ThemeContext } from "../../pages/Main/component";
+import { ThemeContext } from "../../contexts/themeContext";
 import { Menu } from "../Menu/component";
 import { Reviews } from "../Reviews/component";
 

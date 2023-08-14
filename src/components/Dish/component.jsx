@@ -1,29 +1,28 @@
-import { useState } from "react";
-import { Counter } from "../Counter/component";
-import { useCallback } from "react";
-
-const DEFAULT_DISH_AMOUNT = 0;
+import { Button } from "../Button/component";
+import { useDispatch, useSelector } from "../../custome-redux";
 
 export const Dish = ({ dish }) => {
-  const [price, setPrice] = useState(0);
+  const count = useSelector((state) => state[dish.name] || 0);
+  const dispatch = useDispatch();
+
+  const increment = () => {
+    dispatch({ type: "increment", payload: dish.name });
+  };
+  const decrement = () => {};
 
   const { price: dishPrice, name } = dish || {};
-
-  const updateAmount = useCallback(
-    (amount) => setPrice(amount * dishPrice),
-    [dishPrice]
-  );
 
   return (
     <div>
       <div>{name}</div>
-      <Counter
-        defaultCount={DEFAULT_DISH_AMOUNT}
-        min={0}
-        max={5}
-        onCountChange={updateAmount}
-      />
-      <div>Total: ${price}</div>
+      <Button disabled={count === 0} onClick={decrement}>
+        -
+      </Button>
+      <span> {count} </span>
+      <Button disabled={count === 5} onClick={increment}>
+        +
+      </Button>
+      <div>Total: ${count * dishPrice}</div>
     </div>
   );
 };

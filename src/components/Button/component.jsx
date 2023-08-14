@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useRef } from "react";
-import { ThemeContext } from "../../pages/Main/component";
+import { ThemeContext } from "../../contexts/themeContext";
 
 export const Button = ({ children, onClick, disabled }) => {
   const ref = useRef(1); // {current: 1}
