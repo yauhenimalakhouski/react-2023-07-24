@@ -18,7 +18,7 @@ const reducer = (state, {type, payload}={}) => {
         case typePrice:
             return {...state, dishPrice: payload};
         case typeIngridients:
-            return {...state, dishIngridients: payload};
+            return {...state, dishIngridients: payload.split(",")};
         default:
             return state;
     }
@@ -31,7 +31,7 @@ export const NewDish = (activeRestaurantIndex) => {
     useEffect(()=> {
         dispatch({type: typeName, payload: ""});
         dispatch({type: typePrice, payload: 0});
-        dispatch({type: typeIngridients, payload: []});
+        dispatch({type: typeIngridients, payload: ""});
     }, [activeRestaurantIndex]);
     
 
@@ -60,7 +60,7 @@ export const NewDish = (activeRestaurantIndex) => {
                     <input
                         name = "dishIngridients" 
                         value={form.dishIngridients} 
-                        onChange={event => {dispatch({type: typeIngridients, payload: event.target.value.split(',')})}} 
+                        onChange={event => dispatch({type: typeIngridients, payload: event.target.value})}
                     />
                 </div>
                 <input type="submit" value="Заказать"/>

@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { Button } from "../Button/component";
 
+function reduceDishCount(count, f) {
+    if(count === 0) {
+        return;
+    }
+    return f(count-1);
+}
+
 
 export const Dish = ({ dish }) => {
   const [dishCount, setDishCount] = useState(0);
@@ -17,13 +24,7 @@ export const Dish = ({ dish }) => {
         <h4>Ingredients:</h4>
         <ul>{dish.ingredients.map((ingridient, index) => <li key={index}>{ingridient}</li>)}</ul>
         <div>
-            <Button onClick={() => {
-                if(dishCount === 0) {
-                    return;
-                }
-                setDishCount(dishCount-1)
-                }}
-                >-</Button>
+            <Button onClick={() => reduceDishCount(dishCount, setDishCount)}>-</Button>
             <span>{dishCount}</span>
             <Button onClick={() => setDishCount(dishCount+1)}>+</Button>
         </div>
