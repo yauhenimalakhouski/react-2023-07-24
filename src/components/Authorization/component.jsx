@@ -8,7 +8,15 @@ export const Authorization = ({authorization, setAuthorization}) => {
     
     return (
             <div>
-                <Button onClick={() => setShowModal(true)}>{authorization}</Button>
+                <Button 
+                    onClick={() => {
+                        if(authorization !== "Log in") {
+                            setAuthorization("Log in");
+                        } else {
+                            setShowModal(true);
+                        } 
+                    }}
+                >{authorization}</Button>
                 {showModal && createPortal(
                     <AuthorizationModalWindow 
                     setAuthorization={setAuthorization}
