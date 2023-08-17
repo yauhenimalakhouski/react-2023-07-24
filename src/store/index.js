@@ -9,6 +9,12 @@ const rootReducer = (state = defaultState, action) => {
         ...state,
         [action.payload]: (state[action.payload] || 0) + 1,
       };
+    case "decrement":
+      return {
+        ...state,
+        [action.payload]:
+          (state[action.payload] || 0) > 0 ? state[action.payload] - 1 : 0,
+      };
 
     default:
       return state;
