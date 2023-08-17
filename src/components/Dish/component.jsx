@@ -1,12 +1,12 @@
 import { Button } from "../Button/component";
 import { useDispatch, useSelector } from "../../custome-redux";
 import { useContext } from "react";
-import { AuthorizationContext } from "../../contexts/authorizationContext";
+import { UserContext } from "../../contexts/userContext";
 
 export const Dish = ({ dish }) => {
   const count = useSelector((state) => state[dish.name] || 0);
   const dispatch = useDispatch();
-  const authorization = useContext(AuthorizationContext);
+  const authorization = useContext(UserContext);
 
   const increment = () => {
     console.log(authorization);

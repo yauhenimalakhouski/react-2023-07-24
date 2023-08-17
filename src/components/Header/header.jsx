@@ -1,12 +1,9 @@
-import { Authorization } from "../Authorization/component";
+import { LoginButton } from "../LoginButton/component";
 
-export const Header = ({authorization, setAuthorization}) => {
+export const Header = () => {
     return (
         <header>
-            <Authorization 
-                authorization={authorization}
-                setAuthorization={setAuthorization}
-            />    
+            <LoginButton />    
         </header>
     );
 };
