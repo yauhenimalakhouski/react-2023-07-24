@@ -4,6 +4,6 @@ import { useSelector } from "react-redux";
 
 export const RestaurantTabsContainer = (props) => {
   const restaurantIds = useSelector(selectRestaurantIds);
-
+  
   return <Tabs restaurantIds={restaurantIds} {...props} />;
 };

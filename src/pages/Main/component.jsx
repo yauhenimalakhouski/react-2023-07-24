@@ -3,18 +3,18 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Button } from "../../components/Button/component";
 import { ThemeContext } from "../../contexts/themeContext";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "../../store";
 import { Cart } from "../../components/Cart/component";
 import { UserContextProvider } from "../../components/UserContextProvider/component";
 import { RestaurantTabsContainer } from "../../components/Tabs/container";
+import { RestaurantContainer } from "../../components/Restaurant/container";
 
 const LOCAL_STORAGE_KEY = "activeRestaurantIndex";
-
 export const MainPage = () => {
   const [theme, setTheme] = useState("light");
   const [activeRestaurantId, setActiveRestaurantId] = useState(
-    () => localStorage.getItem(LOCAL_STORAGE_KEY) || 0
+    () => localStorage.getItem(LOCAL_STORAGE_KEY) || null
   );
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const MainPage = () => {
               SwitchTheme
             </Button>
             <RestaurantTabsContainer onTabSelect={setActiveRestaurantId} />
-            {/* <RestaurantContainer restaurantId={activeRestaurantId} /> */}
+            <RestaurantContainer restaurantId={activeRestaurantId} />
             <Cart />
           </Layout>
         </ThemeContext.Provider>
