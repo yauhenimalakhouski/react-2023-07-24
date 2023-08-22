@@ -1,5 +1,5 @@
 import { ThemeContext } from "../../contexts/themeContext";
-import { Menu } from "../Menu/component";
+import { MenuContaiener } from "../Menu/container";
 import { Reviews } from "../Reviews/component";
 
 export const Restaurant = ({ restaurant }) => {
@@ -7,7 +7,7 @@ export const Restaurant = ({ restaurant }) => {
     <div>
       <h2>{restaurant.name}</h2>
       <ThemeContext.Provider value="green">
-        <Menu dishes={restaurant.menu} />
+        <MenuContaiener menuIds={restaurant.menu} />
       </ThemeContext.Provider>
       <Reviews reviews={restaurant.reviews} />
     </div>

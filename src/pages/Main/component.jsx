@@ -5,10 +5,10 @@ import { Button } from "../../components/Button/component";
 import { ThemeContext } from "../../contexts/themeContext";
 import { Provider, useSelector } from "react-redux";
 import { store } from "../../store";
-import { Cart } from "../../components/Cart/component";
 import { UserContextProvider } from "../../components/UserContextProvider/component";
 import { RestaurantTabsContainer } from "../../components/Tabs/container";
 import { RestaurantContainer } from "../../components/Restaurant/container";
+import { CartContainer } from "../../components/Cart/container";
 
 const LOCAL_STORAGE_KEY = "activeRestaurantIndex";
 export const MainPage = () => {
@@ -33,7 +33,7 @@ export const MainPage = () => {
             </Button>
             <RestaurantTabsContainer onTabSelect={setActiveRestaurantId} />
             <RestaurantContainer restaurantId={activeRestaurantId} />
-            <Cart />
+            <CartContainer />
           </Layout>
         </ThemeContext.Provider>
       </UserContextProvider>
