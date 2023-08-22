@@ -9,5 +9,5 @@ export const RestaurantContainer = ({restaurantId}) => {
     if(!restaurant) {
         return null;
     }
-    return <Restaurant restaurant={restaurant}/>
+    return <Restaurant restaurant={restaurant} restaurantId={restaurantId}/>
 }

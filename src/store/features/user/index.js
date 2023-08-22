@@ -5,7 +5,7 @@ const DEFAULT_STATE = {
         acc[user.id] = user;
 
         return acc;
-    }),
+    }, {}),
     ids: normalizedUsers.map(({id}) => id),
 };
 

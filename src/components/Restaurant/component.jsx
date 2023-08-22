@@ -1,15 +1,16 @@
 import { ThemeContext } from "../../contexts/themeContext";
 import { MenuContaiener } from "../Menu/container";
-import { Reviews } from "../Reviews/component";
+import { ReviewsContainer } from "../Reviews/container";
 
-export const Restaurant = ({ restaurant }) => {
+
+export const Restaurant = ({ restaurant, restaurantId }) => {
   return (
     <div>
       <h2>{restaurant.name}</h2>
       <ThemeContext.Provider value="green">
-        <MenuContaiener menuIds={restaurant.menu} />
+        <MenuContaiener restaurantId={restaurantId} />
       </ThemeContext.Provider>
-      <Reviews reviews={restaurant.reviews} />
+      <ReviewsContainer restaurantId={restaurantId} />
     </div>
   );
 };
