@@ -3,14 +3,14 @@ import { MenuContaiener } from "../Menu/container";
 import { ReviewsContainer } from "../Reviews/container";
 
 
-export const Restaurant = ({ restaurant, restaurantId }) => {
+export const Restaurant = ({ restaurant }) => {
   return (
     <div>
       <h2>{restaurant.name}</h2>
       <ThemeContext.Provider value="green">
-        <MenuContaiener restaurantId={restaurantId} />
+        <MenuContaiener restaurantId={restaurant.id} />
       </ThemeContext.Provider>
-      <ReviewsContainer restaurantId={restaurantId} />
+      <ReviewsContainer restaurantId={restaurant.id} />
     </div>
   );
 };

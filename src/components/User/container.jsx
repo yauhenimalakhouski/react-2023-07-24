@@ -5,5 +5,10 @@ import { User } from "./component";
 
 export const UserContainer = ({userId}) => {
     const user = useSelector((state) => selectUserById(state, userId));
+
+    if(!user) {
+        return null;
+    }
+    
     return <User user={user}/>;
 }
