@@ -10,6 +10,8 @@ export const checkAuthorization =
   (store) =>
   (next) =>
   (action = {}) => {
+    
+    
     if (!AUTHORIZED_ACTIONS.includes(action.type)) {
       return next(action);
     }
