@@ -1,15 +1,13 @@
-import { useDispatch } from "react-redux";
 import { NewReviewForm } from "./component";
 import { createReview as createReviewThunk } from "../../store/features/review/thunks/create-review";
-import { REQUEST_ID } from "../../store/features/request/constants";
+import { useMakeRequest } from "../../hooks/use-make-request";
 
 export const NewReviewFormContainer = ({ restaurantId }) => {
-  const dispatch = useDispatch();
+  const [status, createReview] = useMakeRequest(createReviewThunk);
 
-  const createReview = (newReview) => {
-    dispatch(
-      createReviewThunk(REQUEST_ID.addReview, { restaurantId, newReview })
-    );
-  };
-  return <NewReviewForm onSaveForm={createReview} />;
+  return (
+    <NewReviewForm
+      onSaveForm={(newReview) => createReview({ newReview, restaurantId })}
+    />
+  );
 };

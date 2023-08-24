@@ -1,28 +1,29 @@
 import { selectRestaurantReviewsById } from "../../restaurant/selectors";
-import {
-  failLoadingReviews,
-  finishLoadingReviews,
-  startLoadingReviews,
-} from "../action";
 import { selectReviewIds } from "../selectors";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const loadReviewsByRestaurantIfNotExist =
-  (restaurantId) => (dispatch, getState) => {
-    const state = getState();
-    const restaurantReviews = selectRestaurantReviewsById(state, restaurantId);
-    const reviewIds = selectReviewIds(state);
+export const loadReviewsByRestaurantIfNotExist = createAsyncThunk(
+  "review/loadReviewsByRestaurantIfNotExist",
+  async (restaurantId) => {
+    const response = await fetch(
+      `http://localhost:3001/api/reviews?restaurantId=${restaurantId}`
+    );
 
-    if (
-      !restaurantReviews ||
-      restaurantReviews.every((reviewId) => reviewIds.includes(reviewId))
-    ) {
-      return;
-    }
+    return await response.json();
+  },
+  {
+    condition: (restaurantId, { getState }) => {
+      const state = getState();
+      const restaurantReviews = selectRestaurantReviewsById(
+        state,
+        restaurantId
+      );
+      const reviewIds = selectReviewIds(state);
 
-    dispatch(startLoadingReviews());
-
-    fetch(`http://localhost:3001/api/reviews?restaurantId=${restaurantId}`)
-      .then((response) => response.json())
-      .then((restaurants) => dispatch(finishLoadingReviews(restaurants)))
-      .catch(() => dispatch(failLoadingReviews()));
-  };
+      return (
+        restaurantReviews &&
+        restaurantReviews.some((reviewId) => !reviewIds.includes(reviewId))
+      );
+    },
+  }
+);

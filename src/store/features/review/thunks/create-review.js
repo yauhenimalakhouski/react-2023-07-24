@@ -1,24 +1,23 @@
-import { failRequest, finishRequest, startRequest } from "../../request/action";
 import { addRestaurantReview } from "../../restaurant/action";
-import { addReview } from "../action";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const createReview =
-  (requestId, { restaurantId, newReview }) =>
-  (dispatch) => {
-    dispatch(startRequest(requestId));
+export const createReview = createAsyncThunk(
+  "review/createReview",
+  async ({ restaurantId, newReview }, { dispatch }) => {
+    const response = await fetch(
+      `http://localhost:3001/api/review/${restaurantId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(newReview),
+      }
+    );
 
-    fetch(`http://localhost:3001/api/review/${restaurantId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(newReview),
-    })
-      .then((response) => response.json())
-      .then((review) => {
-        dispatch(addReview(review));
-        dispatch(addRestaurantReview({ restaurantId, reviewId: review.id }));
-        dispatch(finishRequest(requestId));
-      })
-      .catch((error) => dispatch(failRequest(requestId, error)));
-  };
+    const review = await response.json();
+    dispatch(addRestaurantReview({ restaurantId, reviewId: review.id }));
+
+    return review;
+  }
+);

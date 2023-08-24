@@ -1,57 +1,21 @@
-import { LOADING_STATUS } from "../../../constants/loading-statuses";
-import { REVIEW_ACTION } from "./action";
+import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
+import { createReview } from "./thunks/create-review";
+import { loadReviewsByRestaurantIfNotExist } from "./thunks/load-reveiws-by-restaurant";
 
-const DEFAULT_STATE = {
-  entities: {},
-  ids: [],
-};
+const reviewEntityAdapter = createEntityAdapter();
 
-export const reviewReducer = (
-  state = DEFAULT_STATE,
-  { type, payload } = {}
-) => {
-  switch (type) {
-    case REVIEW_ACTION.startLoading: {
-      return {
-        ...state,
-        status: LOADING_STATUS.loading,
-      };
-    }
-    case REVIEW_ACTION.finishLoading: {
-      return {
-        entities: payload.reduce(
-          (acc, review) => {
-            acc[review.id] = review;
-
-            return acc;
-          },
-          { ...state.entities }
-        ),
-        ids: Array.from(
-          new Set([...payload.map(({ id }) => id), ...state.ids])
-        ),
-        status: LOADING_STATUS.finished,
-      };
-    }
-    case REVIEW_ACTION.failLoading: {
-      return {
-        ...state,
-        status: LOADING_STATUS.failed,
-      };
-    }
-    case REVIEW_ACTION.addReview: {
-      console.log({
-        ...state,
-        entities: { ...state.entities, [payload.id]: payload },
-        ids: [...state.ids, payload.id],
-      });
-      return {
-        ...state,
-        entities: { ...state.entities, [payload.id]: payload },
-        ids: [...state.ids, payload.id],
-      };
-    }
-    default:
-      return state;
-  }
-};
+export const reviewSlice = createSlice({
+  name: "review",
+  initialState: reviewEntityAdapter.getInitialState(),
+  extraReducers: (builder) =>
+    builder
+      .addCase(createReview.fulfilled, (state, { payload } = {}) => {
+        reviewEntityAdapter.addOne(state, payload);
+      })
+      .addCase(
+        loadReviewsByRestaurantIfNotExist.fulfilled,
+        (state, { payload } = {}) => {
+          reviewEntityAdapter.setMany(state, payload);
+        }
+      ),
+});
