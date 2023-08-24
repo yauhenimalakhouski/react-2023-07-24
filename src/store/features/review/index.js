@@ -1,16 +1,56 @@
-import { normalizedReviews } from "../../../constants/normalized-fixtures";
+import { LOADING_STATUS } from "../../../constants/loading-statuses";
+import { REVIEW_ACTION } from "./action";
 
 const DEFAULT_STATE = {
-  entities: normalizedReviews.reduce((acc, review) => {
-    acc[review.id] = review;
-
-    return acc;
-  }, {}),
-  ids: normalizedReviews.map(({ id }) => id),
+  entities: {},
+  ids: [],
 };
 
-export const reviewReducer = (state = DEFAULT_STATE, { type } = {}) => {
+export const reviewReducer = (
+  state = DEFAULT_STATE,
+  { type, payload } = {}
+) => {
   switch (type) {
+    case REVIEW_ACTION.startLoading: {
+      return {
+        ...state,
+        status: LOADING_STATUS.loading,
+      };
+    }
+    case REVIEW_ACTION.finishLoading: {
+      return {
+        entities: payload.reduce(
+          (acc, review) => {
+            acc[review.id] = review;
+
+            return acc;
+          },
+          { ...state.entities }
+        ),
+        ids: Array.from(
+          new Set([...payload.map(({ id }) => id), ...state.ids])
+        ),
+        status: LOADING_STATUS.finished,
+      };
+    }
+    case REVIEW_ACTION.failLoading: {
+      return {
+        ...state,
+        status: LOADING_STATUS.failed,
+      };
+    }
+    case REVIEW_ACTION.addReview: {
+      console.log({
+        ...state,
+        entities: { ...state.entities, [payload.id]: payload },
+        ids: [...state.ids, payload.id],
+      });
+      return {
+        ...state,
+        entities: { ...state.entities, [payload.id]: payload },
+        ids: [...state.ids, payload.id],
+      };
+    }
     default:
       return state;
   }

@@ -7,8 +7,8 @@ import { reviewReducer } from "./features/review";
 import { userReducer } from "./features/user";
 import { authorizationReducer } from "./features/authorization";
 import { checkAuthorization } from "./middlewares/check-authorization";
-import { loadRestaurantsIfNotExist } from "./features/restaurant/middlewares/load-restaurants";
 import { thunk } from "./middlewares/thunk";
+import { requestReducer } from "./features/request";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
@@ -17,16 +17,12 @@ const rootReducer = combineReducers({
   review: reviewReducer,
   user: userReducer,
   authorization: authorizationReducer,
+  request: requestReducer,
 });
 
 export const store = createStore(
   rootReducer,
-  applyMiddleware(
-    thunk,
-    loggerMiddleware,
-    checkAuthorization,
-    loadRestaurantsIfNotExist
-  )
+  applyMiddleware(thunk, loggerMiddleware, checkAuthorization)
 );
 
 console.log(store.getState());
