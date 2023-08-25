@@ -8,6 +8,7 @@ import { userReducer } from "./features/user";
 import { authorizationReducer } from "./features/authorization";
 import { checkAuthorization } from "./middlewares/check-authorization";
 import { thunk } from "./middlewares/thunk";
+import { requsetReducer } from "./features/request";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   review: reviewReducer,
   user: userReducer,
   authorization: authorizationReducer,
+  request: requsetReducer,
 });
 
 export const store = createStore(

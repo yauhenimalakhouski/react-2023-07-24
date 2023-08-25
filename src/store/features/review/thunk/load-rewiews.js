@@ -6,8 +6,8 @@ export const loadRewiewsIfDoesNotExist = (restaurantId) => (dispatch, getState) 
     const state = getState();
     const reviewsIds = selectReviewIds(state);
     const restaurantReviwes = selectRestaurantById(state, restaurantId).reviews;
-    if(reviewsIds.length 
-        && restaurantReviwes.every(reviewId => reviewsIds.includes(reviewId))) {
+    if(!restaurantReviwes 
+        || restaurantReviwes.every(reviewId => reviewsIds.includes(reviewId))) {
             return;
     }
 

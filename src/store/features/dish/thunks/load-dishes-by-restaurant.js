@@ -13,7 +13,11 @@ export const loadDishesByRestaurantIfNotExist =
     const dishs = selectDishIds(state);
     const resturantDishs = selectRestaurantById(state, restaurantId).menu;
 
-    if( dishs.length && resturantDishs.every(dish => dishs.includes(dish))) {
+    // if( dishs.length && resturantDishs.every(dish => dishs.includes(dish))) {
+    //   return;
+    // }
+
+    if( !resturantDishs || resturantDishs.every(dish => dishs.includes(dish))) {
       return;
     }
 
