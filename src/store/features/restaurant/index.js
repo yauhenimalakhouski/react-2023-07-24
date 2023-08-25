@@ -37,6 +37,19 @@ export const restaurantReducer = (
     //     status: LOADING_STATUS.failed,
     //   };
     // }
+
+    case RESTAURANT_ACTION.addReview:{
+      return {
+        ...state,
+        entities: {
+          ...state.entities,
+          [payload.restaurantId]: {
+            ...state.entities[payload.restaurantId],
+            reviews: [...state.entities[payload.restaurantId].reviews, payload.reviewId],
+          }
+        }
+      }
+    }
     default:
       return state;
   }

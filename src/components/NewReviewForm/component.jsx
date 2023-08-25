@@ -55,11 +55,10 @@ export const NewReviewForm = ({onSaveForm}) => {
         />
       </div>
       <Button onClick={() => {
-        onSaveForm({
-          ...form,
-          userId: "52a63cc0-5a6f-41f3-9774-0161ea4c9b0c",
+        onSaveForm({...form,
+          userId: "52a63cc0-5a6f-41f3-9774-0161ea4c9b0c",     //надо в авторизации создать юзера с айди и тут использовать currentUser
         });
-        dispatch({type:"clearForm",})
+        dispatch({type:"clearForm",});
         }}
         >Save review</Button>
     </div>

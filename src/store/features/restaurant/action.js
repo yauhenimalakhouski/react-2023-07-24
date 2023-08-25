@@ -5,6 +5,7 @@ export const RESTAURANT_ACTION = {
   // startLoading: "restaurant/startLoading",
   finishLoading: "restaurant/finishLoading",
   // failLoading: "restaurant/failLoading",
+  addReview: "restaurant/addReview",
 };
 
 // export const startLoadingRestaurants = () => ({
@@ -19,3 +20,8 @@ export const finishLoadingRestaurants = (restaurants) => ({
 // export const failLoadingRestaurants = () => ({
 //   type: RESTAURANT_ACTION.failLoading,
 // });
+
+export const addNewRestaurantReview = ({restaurantId, reviewId}) => ({
+  type: RESTAURANT_ACTION.addReview,
+  payload: {restaurantId, reviewId},
+});

@@ -11,5 +11,4 @@ export const NewReviewFormContainer = ({restaurantId}) => {
     }
     
     return <NewReviewForm onSaveForm={createNewReview}/>;
-
     }

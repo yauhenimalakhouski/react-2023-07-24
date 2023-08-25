@@ -2,9 +2,6 @@ import { failRequest, finishRequest, startRequest } from "../../request/action";
 import { finishLoadingRestaurants } from "../action";
 import { selectRestaurantIds } from "../selectors";
 
-
-
-
 export const loadRestaurants = (requestId) => (dispatch, getState) => {
     const state = getState();
     const restaurantsIds = selectRestaurantIds(state);
