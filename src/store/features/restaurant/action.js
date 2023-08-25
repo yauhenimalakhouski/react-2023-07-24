@@ -5,10 +5,6 @@ export const RESTAURANT_ACTION = {
   failLoading: "restaurant/failLoading",
 };
 
-export const loadRestaurants = () => ({
-  type: RESTAURANT_ACTION.load,
-});
-
 export const startLoadingRestaurants = () => ({
   type: RESTAURANT_ACTION.startLoading,
 });
