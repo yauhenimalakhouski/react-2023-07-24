@@ -7,6 +7,7 @@ import { loadRestaurants } from "../../store/features/restaurant/thunk/load-rest
 export const RestaurantsContainer = () => {
   const isLoading = useSelector(selectIsRestaurantsLoading);
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(loadRestaurants());

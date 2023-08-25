@@ -4,6 +4,7 @@ import { selectRestaurantReviewsById } from "../../store/features/restaurant/sel
 import { selectReviewLoading } from "../../store/features/review/selectors";
 import { useEffect } from "react";
 import { loadRewiewsIfDoesNotExist } from "../../store/features/review/thunk/load-rewiews";
+import { loadUsersIfNotExists } from "../../store/features/user/thunk/load-users";
 
 
 export const ReviewsContainer = ({ restaurantId }) => {
@@ -16,6 +17,7 @@ export const ReviewsContainer = ({ restaurantId }) => {
 
   useEffect(()=>{
     dispatch(loadRewiewsIfDoesNotExist(restaurantId));
+    dispatch(loadUsersIfNotExists());
   }, [dispatch, restaurantId]);
   
   if(isLoading) {

@@ -15,6 +15,6 @@ export const loadRewiewsIfDoesNotExist = (restaurantId) => (dispatch, getState) 
 
     fetch(`http://localhost:3001/api/reviews?restaurantId=${restaurantId}`)
     .then((response) => response.json())
-    .then((restaurants) => dispatch(finishLoadingReviews(restaurants)))
+    .then((reviews) => dispatch(finishLoadingReviews(reviews)))
     .catch(()=>failedLoadingReviews());
 }
