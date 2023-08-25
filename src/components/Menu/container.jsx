@@ -23,3 +23,4 @@ export const MenuContainer = ({ restaurantId }) => {
 
   return <Menu dishIds={dishIds} />;
 };
+ 

@@ -4,11 +4,18 @@ import {
   startLoadingDishes,
 } from "../action";
 
+import { selectDishIds } from "../selectors";
+import { selectRestaurantById } from "../../restaurant/selectors";
+
 export const loadDishesByRestaurantIfNotExist =
   (restaurantId) => (dispatch, getState) => {
-    // if( condition ) {
-    //   return ;
-    // }
+    const state = getState();
+    const dishs = selectDishIds(state);
+    const resturantDishs = selectRestaurantById(state, restaurantId).menu;
+
+    if( dishs.length && resturantDishs.every(dish => dishs.includes(dish))) {
+      return;
+    }
 
     dispatch(startLoadingDishes());
 
