@@ -1,10 +1,12 @@
-import { LOADING_STATUS } from "../../../constants/loading-statuses";
+// import { LOADING_STATUS } from "../../../constants/loading-statuses";
 import { RESTAURANT_ACTION } from "./action";
+
+// из-за применения модуля request case start и fail больше не нужны
 
 const DEFAULT_STATE = {
   entities: {},
   ids: [],
-  status: LOADING_STATUS.idle,
+  // status: LOADING_STATUS.idle,
 };
 
 export const restaurantReducer = (
@@ -12,12 +14,12 @@ export const restaurantReducer = (
   { type, payload } = {}
 ) => {
   switch (type) {
-    case RESTAURANT_ACTION.startLoading: {
-      return {
-        ...state,
-        status: LOADING_STATUS.loading,
-      };
-    }
+    // case RESTAURANT_ACTION.startLoading: {
+    //   return {
+    //     ...state,
+    //     status: LOADING_STATUS.loading,
+    //   };
+    // }
     case RESTAURANT_ACTION.finishLoading: {
       return {
         entities: payload.reduce((acc, restaurant) => {
@@ -26,15 +28,15 @@ export const restaurantReducer = (
           return acc;
         }, {}),
         ids: payload.map(({ id }) => id),
-        status: LOADING_STATUS.finished,
+        // status: LOADING_STATUS.finished,
       };
     }
-    case RESTAURANT_ACTION.failLoading: {
-      return {
-        ...state,
-        status: LOADING_STATUS.failed,
-      };
-    }
+    // case RESTAURANT_ACTION.failLoading: {
+    //   return {
+    //     ...state,
+    //     status: LOADING_STATUS.failed,
+    //   };
+    // }
     default:
       return state;
   }

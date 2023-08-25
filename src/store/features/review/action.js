@@ -2,6 +2,7 @@ export const REVIEW_ACTION = {
     startLoading: "review/startLoading",
     finishLoading: "review/finishLoading",
     failedLoading: "review/failedLoading",
+    addReview: "review/addReview",
 }
 
 
@@ -16,5 +17,10 @@ export const finishLoadingReviews = (reviews) => ({
 
 export const  failedLoadingReviews = () => ({
     type: REVIEW_ACTION.failedLoading,
+});
+
+export const addReview = (review) => ({
+    type: REVIEW_ACTION.addReview,
+    payload: review,
 });
 

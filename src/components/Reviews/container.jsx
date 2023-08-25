@@ -3,7 +3,7 @@ import { Reviews } from "./component";
 import { selectRestaurantReviewsById } from "../../store/features/restaurant/selectors";
 import { selectReviewLoading } from "../../store/features/review/selectors";
 import { useEffect } from "react";
-import { loadRewiewsIfDoesNotExist } from "../../store/features/review/thunk/load-rewiews";
+import { loadRewiewsIfDoesNotExist } from "../../store/features/review/thunk/load-reviews";
 import { loadUsersIfNotExists } from "../../store/features/user/thunk/load-users";
 
 

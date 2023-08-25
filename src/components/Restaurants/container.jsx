@@ -8,7 +8,7 @@ import { selectRequestStatus } from "../../store/features/request/selectors";
 import { LOADING_STATUS } from "../../constants/loading-statuses";
 
 export const RestaurantsContainer = () => {
-  const isLoading = useSelector(selectIsRestaurantsLoading);
+  // const isLoading = useSelector(selectIsRestaurantsLoading);
   const loadingStatus = useSelector(state => selectRequestStatus(state, REQUEST_ID.restaurants));
   const dispatch = useDispatch();
   

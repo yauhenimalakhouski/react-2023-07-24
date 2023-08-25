@@ -33,6 +33,14 @@ export const reviewReducer = (state = DEFAULT_STATE, { type, payload } = {}) => 
         status:REVIEW_STATUS.failedLoading,
       }
     }
+
+    case REVIEW_ACTION.addReview: {
+      return {
+        ...state, 
+        entities: {...state.entities, [payload.id]: payload},
+        ids: [...state.ids, payload.id],
+      }
+    }
     
 
     default:
