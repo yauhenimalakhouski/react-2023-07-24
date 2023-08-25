@@ -6,9 +6,9 @@ import { selectRestaurantIds } from "../selectors";
 
 export const loadRestaurants = () => (dispatch, getState) => {
     const state = getState();
-    const restaurants = selectRestaurantIds(state);
+    const restaurantsIds = selectRestaurantIds(state);
 
-    if( restaurants.length) {
+    if( restaurantsIds.length) {
         return;
     }
 
