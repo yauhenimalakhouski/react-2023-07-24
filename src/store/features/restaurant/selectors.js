@@ -12,12 +12,3 @@ export const selectRestaurantMenuById = (state, id) =>
   selectRestaurantById(state, id).menu;
 
 export const selectRestaurantIds = (state) => selectRestaurantModule(state).ids;
-
-export const selectRestaurantLoadingStatus = (state) =>
-  selectRestaurantModule(state).status;
-
-export const selectIsRestaurantsLoading = (state) =>
-  selectRestaurantLoadingStatus(state) === LOADING_STATUS.loading;
-
-export const selectIsRestaurantLoadingFailed = (state) =>
-  selectRestaurantLoadingStatus(state) === LOADING_STATUS.failed;
