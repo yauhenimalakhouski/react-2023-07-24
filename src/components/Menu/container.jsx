@@ -19,7 +19,7 @@ export const MenuContainer = ({ restaurantId }) => {
 
   if (isLoading) {
     return <div>Loading...</div>;
-  }
+  } 
 
   return <Menu dishIds={dishIds} />;
 };
