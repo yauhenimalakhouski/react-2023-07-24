@@ -3,7 +3,7 @@ import { restaurantSlice } from "./features/restaurant";
 import { loggerMiddleware } from "./middlewares/logger";
 import { dishSlice } from "./features/dish";
 import { reviewSlice } from "./features/review";
-import { userReducer } from "./features/user";
+import { userSlice } from "./features/user";
 import { authorizationReducer } from "./features/authorization";
 import { checkAuthorization } from "./middlewares/check-authorization";
 import { requestSlice } from "./features/request";
@@ -15,7 +15,7 @@ export const store = configureStore({
     restaurant: restaurantSlice.reducer,
     dish: dishSlice.reducer,
     review: reviewSlice.reducer,
-    user: userReducer,
+    user: userSlice.reducer,
     authorization: authorizationReducer,
     request: requestSlice.reducer,
   },

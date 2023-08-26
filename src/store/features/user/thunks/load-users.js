@@ -1,19 +1,9 @@
-import {
-  failLoadingUsers,
-  finishLoadingUsers,
-  startLoadingUsers,
-} from "../action";
-import { selectUserIds } from "../selectors";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const loadUsersIfNotExist = () => (dispatch, getState) => {
-  if (selectUserIds(getState()).length) {
-    return;
-  }
-
-  dispatch(startLoadingUsers());
-
-  fetch("http://localhost:3001/api/users/")
-    .then((response) => response.json())
-    .then((users) => dispatch(finishLoadingUsers(users)))
-    .catch(() => dispatch(failLoadingUsers()));
-};
+export const loadUsersIfNotExist = createAsyncThunk(
+  "user/loadUsersIfNotExist",
+  async () => {
+    const response = await fetch("http://localhost:3001/api/users/");
+    return await response.json();
+  },
+);
