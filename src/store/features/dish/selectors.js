@@ -10,8 +10,8 @@ export const selectDishIds = (state) => selectDishModule(state).ids;
 export const selectDishLoadingStatus = (state) =>
   selectDishModule(state).status;
 
-export const selectIsDishesLoading = (state) =>
-  selectDishLoadingStatus(state) === LOADING_STATUS.loading;
+// export const selectIsDishesLoading = (state) =>
+//   selectDishLoadingStatus(state) === LOADING_STATUS.loading;
 
-export const selectIsDishLoadingFailed = (state) =>
-  selectDishLoadingStatus(state) === LOADING_STATUS.failed;
+// export const selectIsDishLoadingFailed = (state) =>
+//   selectDishLoadingStatus(state) === LOADING_STATUS.failed;

@@ -1,5 +1,5 @@
 import { cartReducer } from "./features/cart";
-import { restaurantReducer } from "./features/restaurant";
+import { restaurantSlice } from "./features/restaurant";
 import { loggerMiddleware } from "./middlewares/logger";
 import { dishSlice } from "./features/dish";
 import { reviewSlice } from "./features/review";
@@ -12,7 +12,7 @@ import { configureStore } from "@reduxjs/toolkit";
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
-    restaurant: restaurantReducer,
+    restaurant: restaurantSlice.reducer,
     dish: dishSlice.reducer,
     review: reviewSlice.reducer,
     user: userReducer,
