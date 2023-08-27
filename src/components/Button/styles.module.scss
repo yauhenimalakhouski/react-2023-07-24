@@ -1,0 +1,66 @@
+.root {
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+    &:hover {
+        cursor: pointer;
+    } 
+}
+
+.tabs {
+    min-width: 100px;
+    height: 30px;
+ }
+
+ .authoriazation  {
+    color: white;
+    width: 150px;
+    height: 30px;
+    background-color: #FFA935;
+}
+
+
+.btn_minus {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: url("images/Btn_minus.svg") no-repeat 50% 50% #1ae41a;
+    border: none;
+}
+
+.btn_plus {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: url("images/Btn_plus.svg") no-repeat 50% 50% #1ae41a;
+    border: none;
+}
+
+.tab {
+    text-decoration: none;
+    color: white;
+    vertical-align: middle;
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-image: -webkit-gradient(linear, left top, right top, from(#9EEFE1), color-stop(51%, #4830F0), to(#9EEFE1));
+    background-image: -o-linear-gradient(left, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+    background-size: 200% auto;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.tab:hover {
+    background-position: right center;
+}
+
+
