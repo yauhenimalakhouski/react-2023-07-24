@@ -1,4 +1,4 @@
-import { cartReducer } from "./features/cart";
+import { cartReducer} from "./features/cart";
 import { restaurantSlice } from "./features/restaurant";
 import { loggerMiddleware } from "./middlewares/logger";
 import { dishSlice } from "./features/dish";
