@@ -4,7 +4,6 @@ import { UserContext } from "../../contexts/userContext.js";
 import { createPortal } from "react-dom";
 import { useState } from "react";
 import { LoginForm } from "../LoginForm/component.jsx";
-import styles from './styles.module.scss';
 
 export const LoginButton = () => {
   const { currentUser, logout } = useContext(UserContext);
