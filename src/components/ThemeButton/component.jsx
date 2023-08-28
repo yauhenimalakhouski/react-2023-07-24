@@ -15,6 +15,7 @@ export const ThemeButton = () => {
     return (
     <Button 
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        type = {`btn_theme_${theme}`}
+        type = {`btn_theme`}
+        switchType={`${theme}`}
     />);
 }

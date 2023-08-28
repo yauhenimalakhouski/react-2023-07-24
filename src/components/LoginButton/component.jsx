@@ -4,6 +4,8 @@ import { UserContext } from "../../contexts/userContext.js";
 import { createPortal } from "react-dom";
 import { useState } from "react";
 import { LoginForm } from "../LoginForm/component.jsx";
+import styles from './styles.module.scss';
+import classNames from "classnames";
 
 export const LoginButton = () => {
   const { currentUser, logout } = useContext(UserContext);
@@ -11,8 +13,8 @@ export const LoginButton = () => {
 
   return (
     <>
-      <div>
-        {currentUser && <span>{currentUser}</span>}
+      <div className={classNames(styles.root)}>
+        {currentUser && <div>{currentUser}</div>}
         <Button
           onClick={() => {
             currentUser ? logout() : setIsModalOpened(true);
