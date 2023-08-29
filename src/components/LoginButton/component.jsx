@@ -1,13 +1,15 @@
-import { useContext } from "react";
 import { Button } from "../Button/component.jsx";
-import { UserContext } from "../../contexts/userContext.js";
 import { createPortal } from "react-dom";
 import { useState } from "react";
 import { LoginForm } from "../LoginForm/component.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentUser } from "../../store/features/authorization/selectors.js";
+import { authorizationSlice } from "../../store/features/authorization/index.js";
 
 export const LoginButton = () => {
-  const { currentUser, logout } = useContext(UserContext);
   const [isModalOpened, setIsModalOpened] = useState();
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
 
   return (
     <>
@@ -15,7 +17,7 @@ export const LoginButton = () => {
         {currentUser && <span>{currentUser}</span>}
         <Button
           onClick={() => {
-            currentUser ? logout() : setIsModalOpened(true);
+            currentUser ? dispatch(authorizationSlice.actions.logout()) : setIsModalOpened(true);
           }}
         >
           {currentUser ? "Logout" : "Login"}

@@ -4,7 +4,7 @@ import { loggerMiddleware } from "./middlewares/logger";
 import { dishSlice } from "./features/dish";
 import { reviewSlice } from "./features/review";
 import { userSlice } from "./features/user";
-import { authorizationReducer } from "./features/authorization";
+import { authorizationSlice } from "./features/authorization";
 import { checkAuthorization } from "./middlewares/check-authorization";
 import { requestSlice } from "./features/request";
 import { configureStore } from "@reduxjs/toolkit";
@@ -16,7 +16,7 @@ export const store = configureStore({
     dish: dishSlice.reducer,
     review: reviewSlice.reducer,
     user: userSlice.reducer,
-    authorization: authorizationReducer,
+    authorization: authorizationSlice.reducer,
     request: requestSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => [

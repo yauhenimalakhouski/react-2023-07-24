@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { Button } from "../Button/component";
-import { useContext } from "react";
-import { UserContext } from "../../contexts/userContext";
+import { authorizationSlice } from "../../store/features/authorization";
+import { useDispatch } from "react-redux";
 
 const DEFAULT_FORM_VALUE = {
   login: "",
@@ -21,8 +21,10 @@ const reducer = (state, { type, payload } = {}) => {
 };
 
 export const LoginForm = ({ onLogin }) => {
-  const { login } = useContext(UserContext);
+
   const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
+  
+  const dispatchUser = useDispatch();
 
   return (
     <div>
@@ -48,7 +50,7 @@ export const LoginForm = ({ onLogin }) => {
       <Button
         disabled={!form.login || !form.password}
         onClick={() => {
-          login(form.login);
+          dispatchUser(authorizationSlice.actions.login(form.login));
           onLogin();
         }}
       >
