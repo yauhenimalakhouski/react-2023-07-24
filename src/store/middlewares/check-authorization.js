@@ -1,10 +1,13 @@
-import { logout } from "../features/authorization/action";
+import { authorizationSlice } from "../features/authorization";
 import { selectStartSessionTime } from "../features/authorization/selectors";
-// import { CART_ACTION } from "../features/cart/action";
+import { cartSlice } from "../features/cart";
 
-// const AUTHORIZED_ACTIONS = [CART_ACTION.increment, CART_ACTION.decrement];
-const AUTHORIZED_ACTIONS = [];
-const SESSION_LIFE_TIME = 10 * 60 * 1000;
+
+const AUTHORIZED_ACTIONS = [
+  cartSlice.actions.increment.type,
+  cartSlice.actions.decrement.type
+];
+const SESSION_LIFE_TIME = 5 * 60 * 1000;
 
 export const checkAuthorization =
   (store) =>
@@ -20,5 +23,5 @@ export const checkAuthorization =
       return next(action);
     }
 
-    store.dispatch(logout());
+    store.dispatch(authorizationSlice.actions.logout());
   };
