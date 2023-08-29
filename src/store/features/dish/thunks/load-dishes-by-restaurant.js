@@ -18,6 +18,5 @@ export const loadDishesByRestaurantIfNotExist = createAsyncThunk(
     return (restaurantMenu && 
       restaurantMenu.some((dishId) => !dishIds.includes(dishId)));
   }
-  
   },
 );
