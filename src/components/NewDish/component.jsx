@@ -1,4 +1,6 @@
 import { useReducer } from "react";
+import styles from './styles.module.scss'
+import classNames from "classnames";
 
 const DEFAULT_VALUE = {
   name: "",
@@ -29,19 +31,21 @@ export const NewDish = () => {
   const [form, dispatch] = useReducer(reducer, DEFAULT_VALUE);
 
   return (
-    <div>
-      <div>
-        <label>Name</label>
+    <div className={classNames(styles.root)}>
+      <div className={styles.form_left_decoration}></div>
+      <div className={styles.form_right_decoration}></div>
+      <div className={styles.circle}></div>
+      <div className={styles.form_inner}>
+        <h3>Order your dish</h3>
         <input
+          placeholder="Username"
           value={form.name}
           onChange={(event) =>
             dispatch({ type: FORM_ACTION.setName, payload: event.target.value })
           }
         />
-      </div>
-      <div>
-        <label>Price</label>
         <input
+          placeholder="Price"
           value={form.price}
           onChange={(event) =>
             dispatch({
@@ -50,10 +54,8 @@ export const NewDish = () => {
             })
           }
         />
-      </div>
-      <div>
-        <label>ingredients</label>
-        <input
+        <textarea
+          placeholder="Ingredients"
           value={form.ingredients}
           onChange={(event) =>
             dispatch({
@@ -62,6 +64,7 @@ export const NewDish = () => {
             })
           }
         />
+        <input type="submit" value="Order"></input>
       </div>
     </div>
   );
