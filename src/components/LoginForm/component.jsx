@@ -54,6 +54,7 @@ export const LoginForm = ({ onLogin }) => {
         onClick={() => {
           login(form.login);
           onLogin();
+          document.body.style.overflow = "auto";
         }}
         type = "auth_submit"
       >

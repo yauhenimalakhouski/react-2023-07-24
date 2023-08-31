@@ -17,7 +17,13 @@ export const LoginButton = () => {
         {currentUser && <div>{currentUser}</div>}
         <Button
           onClick={() => {
-            currentUser ? logout() : setIsModalOpened(true);
+            // currentUser ? logout() : setIsModalOpened(true);
+            if(currentUser) {
+              logout()
+            } else {
+              document.body.style.overflow = "hidden";
+              setIsModalOpened(true);
+            }
           }}
           type="authoriazation"
         >
