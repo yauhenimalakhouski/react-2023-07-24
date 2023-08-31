@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { selectUserIds } from "../selectors";
 
 export const loadUsersIfNotExist = createAsyncThunk(
   "user/loadUsersIfNotExist",
@@ -7,9 +8,6 @@ export const loadUsersIfNotExist = createAsyncThunk(
     return await response.json();
   },
   {
-    condition: (getState) => {
-      const state = getState;
-      return !state;
-    }    
+    condition: (_, {getState}) => !selectUserIds(getState())?.length, 
   }
 );

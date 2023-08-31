@@ -7,22 +7,18 @@ export const restaurantSlice = createSlice({
   name: "restaurant",
   initialState: restaurantEntityAdapter.getInitialState(),
   reducers: {
-    addRestaurantReview: (state, {payload} = {}) => {
-      state.entities =  {
-        ...state.entities,
-        [payload.restaurantId]: {
-          ...state.entities[payload.restaurantId],
-          reviews: [
-            ...state.entities[payload.restaurantId].reviews,
-            payload.reviewId,
-          ],
+    addRestaurantReview: (state, {payload: {restaurantId, reviewId} }) => {
+      restaurantEntityAdapter.updateOne(state, {
+        id: restaurantId,
+        changes: {
+          reviews: [...state.entities[restaurantId].reviews, reviewId],
         },
-      }  
+      })
   }},
   extraReducers: (builder) => builder.addCase(
     loadRestaurantsIfNotExist.fulfilled,
     (state, {payload}={}) => {
-      restaurantEntityAdapter.setMany(state, payload);
+      restaurantEntityAdapter.setAll(state, payload);
     }
   )
 });

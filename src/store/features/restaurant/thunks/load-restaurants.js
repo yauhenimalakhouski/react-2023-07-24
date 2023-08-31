@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { selectRestaurantIds } from "../selectors";
 
 
 export const loadRestaurantsIfNotExist = createAsyncThunk(
@@ -9,10 +10,7 @@ export const loadRestaurantsIfNotExist = createAsyncThunk(
     return await response.json();
   },
   {
-    condition: (getState) => {
-      const state = getState;
-      return !state;
-    }
+    condition: (_, {getState}) => !selectRestaurantIds(getState())?.length,  // "_" в начале параметров означает что мы пропустим один аргумент (будет только getState)
   }
 );
 

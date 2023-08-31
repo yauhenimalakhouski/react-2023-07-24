@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const DEFAULT_STATE = {};
-
 export const cartSlice = createSlice({
   name: "cart",
-  initialState: DEFAULT_STATE,
+  initialState: {},
   reducers: {
     increment: (state, {payload} = {}) => {
       state[payload] =  (state[payload] || 0) + 1;

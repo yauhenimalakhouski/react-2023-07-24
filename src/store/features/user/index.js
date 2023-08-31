@@ -9,7 +9,7 @@ export const userSlice = createSlice({
   extraReducers: (builder) => builder.addCase(
     loadUsersIfNotExist.fulfilled,
     (state, {payload} = {}) => {
-      userEntityAdapter.setMany(state, payload);
+      userEntityAdapter.setAll(state, payload);
     }
   ),
 });
