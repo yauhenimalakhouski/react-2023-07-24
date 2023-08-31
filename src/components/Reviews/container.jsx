@@ -1,22 +1,14 @@
-import { useSelector } from "react-redux";
+import { useGetReviewsQuery } from "../../store/services/api";
 import { Reviews } from "./component";
-import { selectRestaurantReviewsById } from "../../store/features/restaurant/selectors";
-import { loadReviewsByRestaurantIfNotExist } from "../../store/features/review/thunks/load-reveiws-by-restaurant";
-import { loadUsersIfNotExist } from "../../store/features/user/thunks/load-users";
-import { useRequest } from "../../hooks/use-request";
-import { LOADING_STATUS } from "../../constants/loading-statuses";
 
 export const ReviewsContainer = ({ restaurantId }) => {
-  const reviewIds = useSelector((state) =>
-    selectRestaurantReviewsById(state, restaurantId)
-  );
+  const { data: reviews, isFetching } = useGetReviewsQuery(restaurantId, {
+    skip: !restaurantId,
+  });
 
-  const status = useRequest(loadReviewsByRestaurantIfNotExist, restaurantId);
-  useRequest(loadUsersIfNotExist);
-
-  if (status === LOADING_STATUS.loading) {
+  if (isFetching) {
     return <span>Loading....</span>;
   }
 
-  return <Reviews reviewIds={reviewIds} restaurantId={restaurantId} />;
+  return <Reviews reviews={reviews} restaurantId={restaurantId} />;
 };
