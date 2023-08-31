@@ -4,7 +4,7 @@ export const Review = ({ review }) => {
   if (!review) {
     return null;
   }
-
+  
   return (
     <div>
       <span>{review.text}</span>

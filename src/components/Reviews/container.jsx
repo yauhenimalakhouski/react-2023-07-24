@@ -1,10 +1,12 @@
-import { useGetReviewsQuery } from "../../store/services/api";
+import { useGetReviewsQuery, useGetUsersQuery } from "../../store/services/api";
 import { Reviews } from "./component";
 
 export const ReviewsContainer = ({ restaurantId }) => {
   const { data: reviews, isFetching } = useGetReviewsQuery(restaurantId, {
     skip: !restaurantId,
   });
+
+  const { data: users} = useGetUsersQuery();
 
   if (isFetching) {
     return <span>Loading....</span>;
