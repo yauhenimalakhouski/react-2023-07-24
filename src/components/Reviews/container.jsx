@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Reviews } from "./component";
 import { selectRestaurantReviewsById } from "../../store/features/restaurant/selectors";
-import { useEffect } from "react";
 import { loadReviewsByRestaurantIfNotExist } from "../../store/features/review/thunks/load-reveiws-by-restaurant";
 import { loadUsersIfNotExist } from "../../store/features/user/thunks/load-users";
 import { useRequest } from "../../hooks/use-request";
@@ -12,13 +11,8 @@ export const ReviewsContainer = ({ restaurantId }) => {
     selectRestaurantReviewsById(state, restaurantId)
   );
 
-  const dispatch = useDispatch();
-
   const status = useRequest(loadReviewsByRestaurantIfNotExist, restaurantId);
-
-  useEffect(() => {
-    dispatch(loadUsersIfNotExist());
-  }, [dispatch]);
+  useRequest(loadUsersIfNotExist);
 
   if (status === LOADING_STATUS.loading) {
     return <span>Loading....</span>;
