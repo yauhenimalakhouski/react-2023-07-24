@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-import { selectUserById } from "../../store/features/user/selectors";
 import { User } from "./component";
 import { useGetUsersQuery } from "../../store/services/api";
 

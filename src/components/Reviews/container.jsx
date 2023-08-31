@@ -6,7 +6,7 @@ export const ReviewsContainer = ({ restaurantId }) => {
     skip: !restaurantId,
   });
 
-  const { data: users} = useGetUsersQuery();
+  useGetUsersQuery();
 
   if (isFetching) {
     return <span>Loading....</span>;
