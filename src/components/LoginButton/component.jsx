@@ -18,7 +18,7 @@ export const LoginButton = () => {
         <Button
           onClick={() => {
             if(currentUser){
-              logoutt();   //из useContext
+              logoutt();   //из useContext(!!!не надо context, брать из store logout и login и current user)
               dispatch(logout()); //из store
             } else {
               setIsModalOpened(true);
