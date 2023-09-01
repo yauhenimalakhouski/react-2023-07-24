@@ -20,10 +20,10 @@ const reducer = (state, { type, payload } = {}) => {
     default:
       return state;
   }
-};
+}; 
 
-export const NewReviewForm = ({ onSaveForm }) => {
-  const [form, dispatch] = useReducer(reducer, DEFAULT_VALUE);
+export const NewReviewForm = ({ onSaveForm, formState = DEFAULT_VALUE }) => {
+  const [form, dispatch] = useReducer(reducer, formState);
 
   return (
     <div>
