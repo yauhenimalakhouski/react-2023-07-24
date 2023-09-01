@@ -2,14 +2,14 @@ import { useGetReviewsQuery, useGetUsersQuery } from "../../store/services/api";
 import { Reviews } from "./component";
 
 export const ReviewsContainer = ({ restaurantId }) => {
-  const { data: reviews, isLoading } = useGetReviewsQuery(restaurantId, {
+  const { data: reviews, isFetching } = useGetReviewsQuery(restaurantId, {
     skip: !restaurantId,
     pollingInterval: 1*60*1000,
   });
 
   useGetUsersQuery();
 
-  if (isLoading) {
+  if (isFetching) {
     return <span>Loading....</span>;
   }
 
