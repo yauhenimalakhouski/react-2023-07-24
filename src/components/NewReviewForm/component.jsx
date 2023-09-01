@@ -5,7 +5,7 @@ const DEFAULT_VALUE = {
   name: "",
   text: "",
   rating: 5,
-};
+}; 
 
 const reducer = (state, { type, payload } = {}) => {
   switch (type) {

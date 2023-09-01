@@ -4,6 +4,7 @@ import { Reviews } from "./component";
 export const ReviewsContainer = ({ restaurantId }) => {
   const { data: reviews, isFetching } = useGetReviewsQuery(restaurantId, {
     skip: !restaurantId,
+    pollingInterval: 1*60*1000,
   });
 
   useGetUsersQuery();
