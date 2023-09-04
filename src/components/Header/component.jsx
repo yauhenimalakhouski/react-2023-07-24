@@ -1,8 +1,11 @@
+import classNames from "classnames";
 import { LoginButton } from "../LoginButton/component";
 
-export const Header = () => {
+import styles from "./styles.module.css";
+
+export const Header = ({ className }) => {
   return (
-    <header>
+    <header className={classNames(styles.root, className)}>
       <LoginButton />
     </header>
   );

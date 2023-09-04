@@ -8,7 +8,7 @@ export const RestaurantTabsContainer = (props) => {
     isLoading,
     isError,
     refetch,
-  } = useGetRestaurantsQuery(undefined, { pollingInterval: 5000 });
+  } = useGetRestaurantsQuery(undefined);
 
   if (isError) {
     return <Button onClick={refetch}>Refetch</Button>;
