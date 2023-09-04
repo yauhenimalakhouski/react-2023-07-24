@@ -1,17 +1,12 @@
-import { Tab } from "../Tab/component";
+import { NavTab } from "../NavTab/component";
 
 import styles from "./styles.module.css";
 
-export const Tabs = ({ restaurants, onTabSelect }) => {
+export const Tabs = ({ restaurants }) => {
   return (
     <div>
       {restaurants.map(({ id, name }) => (
-        <Tab
-          key={id}
-          title={name}
-          className={styles.tab}
-          onTabSelect={() => onTabSelect(id)}
-        />
+        <NavTab key={id} title={name} className={styles.tab} to={`${id}`} />
       ))}
     </div>
   );

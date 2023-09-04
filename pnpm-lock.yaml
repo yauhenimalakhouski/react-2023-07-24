@@ -13,6 +13,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-redux: ^8.1.2
+  react-router-dom: '6'
   redux: ^4.2.1
   vite: ^4.4.5
 
@@ -22,6 +23,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-redux: 8.1.2_grr6xksxjkyp5rsdgcrn3636o4
+  react-router-dom: 6.15.0_biqbaboplfbrettd7655fr4n2y
   redux: 4.2.1
 
 devDependencies:
@@ -341,6 +343,11 @@ packages:
       redux: 4.2.1
       redux-thunk: 2.4.2_redux@4.2.1
       reselect: 4.1.8
+    dev: false
+
+  /@remix-run/router/1.8.0:
+    resolution: {integrity: sha512-mrfKqIHnSZRyIzBcanNJmVQELTnX+qagEDlcKO90RgRBVOZGSGvZKeDihTRfWcqoDn5N/NkUcwWTccnpN18Tfg==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /@swc/core-darwin-arm64/1.3.71:
@@ -1554,6 +1561,29 @@ packages:
       react-is: 18.2.0
       redux: 4.2.1
       use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
+
+  /react-router-dom/6.15.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-aR42t0fs7brintwBGAv2+mGlCtgtFQeOzK0BM1/OiqEzRejOZtpMZepvgkscpMUnKb8YO84G7s3LsHnnDNonbQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.8.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 6.15.0_react@18.2.0
+    dev: false
+
+  /react-router/6.15.0_react@18.2.0:
+    resolution: {integrity: sha512-NIytlzvzLwJkCQj2HLefmeakxxWHWAP+02EGqWEZy+DgfHHKQMUoBBjUQLOtFInBMhWtb3hiUy6MfFgwLjXhqg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.8.0
+      react: 18.2.0
     dev: false
 
   /react/18.2.0:
