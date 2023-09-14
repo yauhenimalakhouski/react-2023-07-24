@@ -12,6 +12,7 @@ import { Layout } from "./components/Layout/component";
 import { RestaurantPage } from "./pages/Restaurant/component";
 import { RestaurantContainer } from "./components/Restaurant/container";
 import { CartContainer } from "./components/Cart/container";
+import { MenuContainer } from "./components/Menu/container";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -24,7 +25,11 @@ root.render(
             <Route index element={<MainPage />}></Route>
             <Route path="restaurants" element={<RestaurantPage />}>
               <Route index element={<span>Select Restaurant</span>} />
-              <Route path=":restaurantId" element={<RestaurantContainer />} />
+              <Route path=":restaurantId" element={<RestaurantContainer />}>
+                <Route path=":menu" element={<MenuContainer/>}>
+  
+                </Route>
+              </Route>
             </Route>
             <Route path="cart" element={<CartContainer />} />
           </Routes>
