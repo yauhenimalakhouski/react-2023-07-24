@@ -38,7 +38,7 @@ export const api = createApi({
         method: "PATCH",
         body: review,
       }),
-      invalidatesTags: () => [{type: "Review", id: "LIST"}],
+      invalidatesTags: (result) => [{type: "Review", id: result.id}],
     }),
     getDishes: builder.query({
       query: (restaurantId) => ({
@@ -48,14 +48,16 @@ export const api = createApi({
         },
       }),
       providesTags: (result) => 
-      (result || []).map(({id}) => ({type: "Dish", id})),
+      (result || []).map(({id}) => ({type: "Dish", id}))
+      .concat({ type: "Dish", id: "LIST" }),
     }),
     getUsers: builder.query({
       query:() => ({
         url: 'users',
       }),
       providesTags: (result) =>
-      (result || []).map(({id}) => ({type: "User", id})),
+      (result || []).map(({id}) => ({type: "User", id}))
+      .concat({ type: "User", id: "LIST" }),
     }),
   }),
 });

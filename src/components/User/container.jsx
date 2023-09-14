@@ -2,12 +2,16 @@ import { User } from "./component";
 import { useGetUsersQuery } from "../../store/services/api";
 
 export const UserContainer = ({ userId }) => {
-  const {data: user} = useGetUsersQuery(undefined, {
+  const {data: user, isFetching} = useGetUsersQuery(undefined, {
     selectFromResult: (result) => ({
       ...result,
       data:result.data?.find(({id}) => id === userId),
     }),
   });
+
+  if(isFetching) {
+    return <div>Loading...</div>
+  }
 
   if (!user) {
     return null;
