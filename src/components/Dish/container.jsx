@@ -12,16 +12,16 @@ export const DishContainer = ({ dish, ...props }) => {
   }
 
   return (
-    <Dish
-      dish={dish}
-      amount={amount}
-      increment={() => {
-        dispatch(cartSlice.actions.incrementDish(dish.id));
-      }}
-      decrement={() => {
-        dispatch(cartSlice.actions.decrementDish(dish.id));
-      }}
-      {...props}
-    />
+      <Dish
+        dish={dish}
+        amount={amount}
+        increment={() => {
+          dispatch(cartSlice.actions.incrementDish(dish.id));
+        }}
+        decrement={() => {
+          dispatch(cartSlice.actions.decrementDish(dish.id));
+        }}
+        {...props}
+      />
   );
 };

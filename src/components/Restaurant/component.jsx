@@ -1,6 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { MenuContainer } from "../Menu/container";
-import { ReviewsContainer } from "../Reviews/container";
+
 
 import styles from "./styles.module.css";
 
