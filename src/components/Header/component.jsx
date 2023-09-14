@@ -12,6 +12,7 @@ export const Header = ({ className }) => {
         Home
       </Link>
       <Link to="/restaurants">Restaurants</Link>
+      <Link to="/dishes">Dishes</Link>
     </header>
   );
 };

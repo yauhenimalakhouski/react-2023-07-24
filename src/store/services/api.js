@@ -24,6 +24,15 @@ export const api = createApi({
           .map(({ id }) => ({ type: "Dish", id }))
           .concat({ type: "Dish", id: "LIST" }),
     }),
+    getAllDishes: builder.query({
+      query: () => ({
+        url: "dishes",
+      }),
+      providesTags: (result) => 
+      (result || [])
+      .map(({id}) => ({type: 'Dish', id}))
+      .concat({type:"User", id: "LIST"}),
+    }),
     getUsers: builder.query({
       query: () => ({
         url: "users",
@@ -71,4 +80,5 @@ export const {
   useUpdateReviewMutation,
   useGetDishesQuery,
   useGetUsersQuery,
+  useGetAllDishesQuery,
 } = api;

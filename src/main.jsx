@@ -14,6 +14,7 @@ import { RestaurantContainer } from "./components/Restaurant/container";
 import { CartContainer } from "./components/Cart/container";
 import { MenuContainer } from "./components/Menu/container";
 import { ReviewsContainer } from "./components/Reviews/container";
+import { DishesPage } from "./pages/Dishes/component";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -33,7 +34,7 @@ root.render(
               </Route>
             </Route>
             <Route path="cart" element={<CartContainer />} />
-          
+            <Route path="dishes" element={<DishesPage />} />
           </Routes>
         </Layout>
       </UserContextProvider>
